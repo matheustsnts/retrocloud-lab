@@ -1,61 +1,16 @@
-version: "3.9"
+version: '3.8'
 
 services:
+  # Este é o único serviço que você precisa.
+  # Ele servirá o site (HTML, JS, CSS) e os emuladores (WASM).
   nginx:
     image: nginx:alpine
-    container_name: retrocloud-nginx
+    container_name: retrocloud_nginx
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./web:/usr/share/nginx/html:ro
-    depends_on:
-      - ps1
-      - snes
-      - n64
-    networks:
-      - retronet
+      # Monta a pasta 'web' do seu PC para dentro do container
+      - ./web:/usr/share/nginx/html
+      # Monta a configuração customizada do Nginx
+      - ./nginx_config/nginx.conf:/etc/nginx/conf.d/default.conf
     restart: unless-stopped
-
-  ps1:
-    build: ./emulators/ps1
-    container_name: retrocloud-ps1
-    volumes:
-      - ./roms/ps1:/roms:ro
-    expose:
-      - "8080"
-    networks:
-      - retronet
-    environment:
-      - DISPLAY=:99
-    restart: unless-stopped
-
-  snes:
-    build: ./emulators/snes
-    container_name: retrocloud-snes
-    volumes:
-      - ./roms/snes:/roms:ro
-    expose:
-      - "8080"
-    networks:
-      - retronet
-    environment:
-      - DISPLAY=:99
-    restart: unless-stopped
-
-  n64:
-    build: ./emulators/n64
-    container_name: retrocloud-n64
-    volumes:
-      - ./roms/n64:/roms:ro
-    expose:
-      - "8080"
-    networks:
-      - retronet
-    environment:
-      - DISPLAY=:99
-    restart: unless-stopped
-
-networks:
-  retronet:
-    driver: bridge

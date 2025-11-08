@@ -1,29 +1,12 @@
-# ROMs e BIOS
-roms/**/*
-!roms/**/.gitkeep
-*.bin
-*.iso
-*.z64
-*.n64
-*.smc
-*.sfc
-*.gba
-*.nds
-*.cue
-*.img
-*.mdf
-*.pbp
-bios/
-*.bios
-
-# Saves
-saves/
-states/
-*.sav
-*.state
-
-# Logs
+# Arquivos de log e sistema
 *.log
 .DS_Store
-Thumbs.db
+
+# Pasta de ROMs (não deve ir para o Git)
+web/roms/
+
+# Pasta de "núcleos" do emulador
+web/colors/
+
+# Arquivos de configuração local
 .env
