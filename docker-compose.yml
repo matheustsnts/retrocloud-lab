@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: retrocloud-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./web:/usr/share/nginx/html:ro
+    depends_on:
+      - ps1
+      - snes
+      - n64
+    networks:
+      - retronet
+    restart: unless-stopped
+
+  ps1:
+    build: ./emulators/ps1
+    container_name: retrocloud-ps1
+    volumes:
+      - ./roms/ps1:/roms:ro
+    expose:
+      - "8080"
+    networks:
+      - retronet
+    environment:
+      - DISPLAY=:99
+    restart: unless-stopped
+
+  snes:
+    build: ./emulators/snes
+    container_name: retrocloud-snes
+    volumes:
+      - ./roms/snes:/roms:ro
+    expose:
+      - "8080"
+    networks:
+      - retronet
+    environment:
+      - DISPLAY=:99
+    restart: unless-stopped
+
+  n64:
+    build: ./emulators/n64
+    container_name: retrocloud-n64
+    volumes:
+      - ./roms/n64:/roms:ro
+    expose:
+      - "8080"
+    networks:
+      - retronet
+    environment:
+      - DISPLAY=:99
+    restart: unless-stopped
+
+networks:
+  retronet:
+    driver: bridge

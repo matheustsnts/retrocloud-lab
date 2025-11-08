@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCloud Lab 🎮</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .consoles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .console-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        .console-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .console-icon { font-size: 3em; margin-bottom: 10px; }
+        .console-name { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
+        .console-desc { font-size: 0.9em; opacity: 0.9; }
+        .info {
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .info h3 { color: #333; margin-bottom: 10px; }
+        .info p { color: #666; line-height: 1.6; }
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .tech-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 RetroCloud Lab</h1>
+        <p class="subtitle">Laboratório de Emulação em Microsserviços (Alpine Linux)</p>
+        
+        <div class="consoles">
+            <a href="/ps1/" class="console-card" target="_blank">
+                <div class="console-icon">🎮</div>
+                <div class="console-name">PlayStation 1</div>
+                <div class="console-desc">Sony PSX</div>
+            </a>
+            
+            <a href="/snes/" class="console-card" target="_blank">
+                <div class="console-icon">🕹️</div>
+                <div class="console-name">Super Nintendo</div>
+                <div class="console-desc">SNES</div>
+            </a>
+            
+            <a href="/n64/" class="console-card" target="_blank">
+                <div class="console-icon">🎯</div>
+                <div class="console-name">Nintendo 64</div>
+                <div class="console-desc">N64</div>
+            </a>
+        </div>
+        
+        <div class="info">
+            <h3>📚 Sobre o Projeto</h3>
+            <p>
+                Laboratório educacional de emulação retro usando arquitetura de microsserviços.
+                Cada console roda em um container Docker Alpine isolado (muito mais leve!).
+            </p>
+            
+            <div class="tech-stack">
+                <span class="tech-badge">🐳 Docker</span>
+                <span class="tech-badge">🌐 Nginx</span>
+                <span class="tech-badge">🎮 RetroArch</span>
+                <span class="tech-badge">🏔️ Alpine Linux</span>
+                <span class="tech-badge">🖥️ noVNC</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
